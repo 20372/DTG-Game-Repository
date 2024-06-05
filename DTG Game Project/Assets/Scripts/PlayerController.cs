@@ -14,13 +14,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        
     }
     void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-
+            Debug.Log("pRESSED W");
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
     }
 }
