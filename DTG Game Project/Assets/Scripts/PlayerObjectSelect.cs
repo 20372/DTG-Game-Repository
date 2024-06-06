@@ -16,17 +16,17 @@ public class PlayerObjectSelect : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            RayFire();
+            FireRay();
         }
     }
 
-    void RayFire()
+    void FireRay()
     {
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(cameraRay, out hit))
         {
-            Debug.Log(hit.collider.gameObject.name + "was hit");
+            Debug.Log(hit.collider.gameObject.name + " was hit");
            
         }
     }
