@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class PlayerObjectSelect : MonoBehaviour
 {
-   RaycastHit hit;
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
+    RaycastHit hit;
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))

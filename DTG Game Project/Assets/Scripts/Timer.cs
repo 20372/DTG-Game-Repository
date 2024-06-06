@@ -5,11 +5,13 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    public float level;
     public TextMeshProUGUI UITimeLeft;
-    public int TimeLeft = 100;
+    private int TimeLeft = 100;
 
     void Start()
     {
+        TimeLeft = (int)(100 * level) + 1;
         InvokeRepeating("TimerChange", 1f, 1f);
     }
 

@@ -5,27 +5,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 3f;
-    Vector2 lookPos;
-    // Start is called before the first frame update
-    void Start()
+    Rigidbody rb;
+    Vector3 lookPos;
+    private void Start()
     {
-
+        rb = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        lookPos.x = Input.GetAxis("Horizontal");
-        lookPos.y = Input.GetAxis("Vertical");
+        lookPos.x = Input.GetAxisRaw("Horizontal") * speed;
+        lookPos.y = Input.GetAxisRaw("Vertical") * speed;
 
-       
+        rb.velocity = new Vector3(lookPos.x, 0, lookPos.y);
     }
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Debug.Log("pRESSED W");
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        }
+        
     }
 }
