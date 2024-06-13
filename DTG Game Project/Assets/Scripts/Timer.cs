@@ -21,7 +21,12 @@ public class Timer : MonoBehaviour
         UITimeLeft.text = "Time Left - " + TimeLeft + "s";
         if (TimeLeft == 0)
         {
-            Debug.Log("User Run out of time");
+            GameOver();
         }
+    }
+
+    void GameOver()
+    {
+        Debug.Log("User Run out of time");
     }
 }
