@@ -8,7 +8,8 @@ public class HealthManager : MonoBehaviour
     public float healthAmount;
     public float healthMax;
     public Image healthBar;
-
+    public BatteryColorChage batteryColorChage;
+    public BatterySounds batterySounds;
 
     void Start()
     {
@@ -20,10 +21,14 @@ public class HealthManager : MonoBehaviour
         if (Input.GetKeyDown("e"))
         {
             DealDamage(20);
+            batteryColorChage.ChangeBatteryRed();
+            batterySounds.Sound_Damage();
         }
         if (Input.GetKeyDown("r"))
         {
             Heal(20);
+            batteryColorChage.ChangeBatteryGold();
+            batterySounds.Sound_Heal();
         }
         if (healthAmount <= 0)
         {
