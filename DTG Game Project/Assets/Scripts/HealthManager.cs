@@ -10,11 +10,7 @@ public class HealthManager : MonoBehaviour
     public Image healthBar;
     public BatteryColorChage batteryColorChage;
     public BatterySounds batterySounds;
-
-    void Start()
-    {
-        
-    }
+    public HealTimer healTimer;
 
     void Update()
     {
@@ -26,9 +22,9 @@ public class HealthManager : MonoBehaviour
         }
         if (Input.GetKeyDown("r"))
         {
-            Heal(20);
-            batteryColorChage.ChangeBatteryGold();
-            batterySounds.Sound_Heal();
+          
+            healTimer.StartHealing();
+            StartCoroutine(Wait3());
         }
         if (healthAmount <= 0)
         {
@@ -47,5 +43,13 @@ public class HealthManager : MonoBehaviour
         healthAmount += healing;
         healthAmount = Mathf.Clamp(healthAmount, 0, healthMax);
         healthBar.fillAmount = healthAmount / 100f;
+    }
+
+    public IEnumerator Wait3()
+    {
+        yield return new WaitForSeconds(3f);
+        Heal(20);
+        batteryColorChage.ChangeBatteryGold();
+        batterySounds.Sound_Heal();
     }
 }
