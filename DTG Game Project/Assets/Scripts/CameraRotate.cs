@@ -6,13 +6,15 @@ public class CameraRotate : MonoBehaviour
 { //sens variable
     public float sensX;
     public float sensY;
-
+    public GameObject player;
+    public Vector3 offset;
     public Transform orientation;
     //rotation variable 
     float rotX;
     float rotY;
     void Start()
     {
+        transform.position = player.transform.position + offset;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

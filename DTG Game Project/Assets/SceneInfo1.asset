@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SceneInfo1
   m_EditorClassIdentifier: 
   current_playerPos: {x: 0, y: 0, z: 0}
-  current_playerHealth: 5
+  current_playerHealth: 100
   curret_playerSpeed: 10

@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 public class PlayerObjectSelect : MonoBehaviour
 {
     RaycastHit hit;
-
+    public SceneInfo1 sceneInfo1;
+    public HealthManager healthManager;
+    public GameObject player;
+    public GameObject cameraParent;
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -21,9 +24,13 @@ public class PlayerObjectSelect : MonoBehaviour
         if (Physics.Raycast(cameraRay, out hit))
         {
             Debug.Log(hit.collider.gameObject.name + " was hit");
-            if(hit.collider.gameObject.CompareTag("Table"))
+            if(hit.collider.gameObject.CompareTag("Computer"))
             {
-                SceneManager.LoadScene("Computer", LoadSceneMode.Additive);
+                sceneInfo1.current_playerHealth = healthManager.healthAmount;
+                sceneInfo1.current_playerPos = player.transform.position;
+                sceneInfo1.current_PlayerCameraPos = cameraParent.transform.position;
+                Debug.Log(healthManager.healthAmount);
+                SceneManager.LoadScene("Computer");
             }
            
         }

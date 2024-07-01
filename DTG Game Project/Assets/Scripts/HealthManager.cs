@@ -12,6 +12,7 @@ public class HealthManager : MonoBehaviour
     public BatterySounds batterySounds;
     public HealTimer healTimer;
 
+    
     void Update()
     {
         if (Input.GetKeyDown("e"))
@@ -32,6 +33,10 @@ public class HealthManager : MonoBehaviour
         }
     }
 
+    public void ResetHealthAmount(float amount)
+    {
+        healthBar.fillAmount = amount / 100f;
+    }
     public void DealDamage(float damage)
     {
         healthAmount -= damage;

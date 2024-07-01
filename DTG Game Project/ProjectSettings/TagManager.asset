@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Table
+  - Computer
+  - isGround
   layers:
   - Default
   - TransparentFX
