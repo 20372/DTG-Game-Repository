@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class Inventory_Click : MonoBehaviour
 {
+
+    public CircuitPlaySounds circuitPlaySounds;
+
     private bool isItemOnHand;
     public FollowMousePosition followMousePosition;
     public Image itemInHand;
@@ -13,6 +16,11 @@ public class Inventory_Click : MonoBehaviour
     public Image circuit_topRight;
     public Image circuit_bottom_middle;
     public Sprite question;
+    
+    public Image medal;
+    public Image banner;
+    public TextMeshProUGUI medalText;
+    public TextMeshProUGUI returnText;
   
     public List<Sprite> components; //List of every component player can use 
 
@@ -25,6 +33,13 @@ public class Inventory_Click : MonoBehaviour
 
     private int outputOBJ;
 
+    public void TurnEndScreenUIOn()
+    {
+        medal.enabled = true;
+        medalText.enabled = true;
+        returnText.enabled = true;
+        banner.enabled = true;
+    }
     public void ResetCircuit()
     {
         circuit_topLeft.sprite = question;
@@ -33,7 +48,7 @@ public class Inventory_Click : MonoBehaviour
     }
     public void Start()
     {
-        itemInHand.enabled = false; 
+        itemInHand.enabled = false;
         currentImageInt = 100;
     }
 
@@ -57,6 +72,7 @@ public class Inventory_Click : MonoBehaviour
     {
         Debug.Log("You pressed slot " + (slotIndex + 1));
         isItemOnHand = true;
+        circuitPlaySounds.select();
         itemInHand.sprite = components[slotIndex];
         currentImageInt = slotIndex;
     }
@@ -65,6 +81,7 @@ public class Inventory_Click : MonoBehaviour
     {
         Debug.Log("Changed Circuit Position to ");
         isItemOnHand = false;
+        circuitPlaySounds.place();
         if (CircuitIndex == 0) //top left button
         {
             circuit_topLeft.sprite = components[currentImageInt]; //updates the circuit sprite 
