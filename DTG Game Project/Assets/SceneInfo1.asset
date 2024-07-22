@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977dd1f5a1ef3634b9ebe5b6fc32c342, type: 3}
   m_Name: SceneInfo1
   m_EditorClassIdentifier: 
-  current_playerPos: {x: 0, y: 0, z: 0}
   current_playerHealth: 100
-  curret_playerSpeed: 10
+  current_PlayerPos: {x: 0, y: 1, z: 0}
+  current_PlayerRot: {x: 0, y: 0, z: 0, w: 0}
+  takeDamageOnReturn: 0
+  slopeComplete: 0
+  circuitComplete: 0
+  quizComplete: 0
+  footballComplete: 0
+  arenaComplete: 0

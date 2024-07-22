@@ -8,6 +8,9 @@ TagManager:
   - Table
   - Computer
   - isGround
+  - Void
+  - Slope
+  - Circuit
   layers:
   - Default
   - TransparentFX
