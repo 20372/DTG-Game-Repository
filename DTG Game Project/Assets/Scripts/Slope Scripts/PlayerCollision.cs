@@ -7,6 +7,7 @@ public class PlayerCollision : MonoBehaviour
 {
     public SceneInfo1 sceneInfo1;
     private SlopeHealth slopeHealth;
+    private SlopeManager slopeManager;
     public Transform playerPos;
     private Vector3 startPos;
     private Rigidbody rb;
@@ -14,6 +15,7 @@ public class PlayerCollision : MonoBehaviour
     private void Start()
     {
         slopeHealth = FindObjectOfType<SlopeHealth>();
+        slopeManager = FindObjectOfType<SlopeManager>();
         startPos = playerPos.transform.position;
         rb = GetComponent<Rigidbody>();
     }
@@ -37,6 +39,14 @@ public class PlayerCollision : MonoBehaviour
         if (coll.gameObject.CompareTag("Finish"))
         {
             SceneManager.LoadScene("Factory");
+        }
+        if (coll.gameObject.CompareTag("SlowSpeed"))
+        {
+            slopeManager.SlowPlayer(rb);
+        }
+        if (coll.gameObject.CompareTag("FastSpeed"))
+        {
+            slopeManager.SpeedUpPlayer(rb);
         }
     }
 }

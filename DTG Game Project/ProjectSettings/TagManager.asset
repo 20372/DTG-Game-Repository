@@ -11,6 +11,8 @@ TagManager:
   - Void
   - Slope
   - Circuit
+  - SlowSpeed
+  - FastSpeed
   layers:
   - Default
   - TransparentFX

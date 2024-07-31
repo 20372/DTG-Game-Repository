@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class SlopeSound : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public AudioSource backgroundsounds;
+    public AudioSource healthloss;
+    public AudioSource speedReset;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        playBackground();
+    }
+    public void playBackground()
+    {
+        backgroundsounds.Play();
+    }
+    public void playHealthLose()
+    {
+        healthloss.Play();
+    }
+    public void playSpeedReset()
+    {
+        speedReset.Play();
     }
 }
