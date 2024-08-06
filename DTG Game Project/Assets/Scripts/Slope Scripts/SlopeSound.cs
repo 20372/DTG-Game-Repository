@@ -6,13 +6,15 @@ public class SlopeSound : MonoBehaviour
 {
     public AudioSource backgroundsounds;
     public AudioSource healthloss;
-    public AudioSource speedReset;
+    public AudioSource speedUpSound;
+    public AudioSource slowDownSound;
+    public AudioSource jumpSound;
 
     private void Start()
     {
-        playBackground();
+        playBackGroundMusic();
     }
-    public void playBackground()
+    public void playBackGroundMusic()
     {
         backgroundsounds.Play();
     }
@@ -22,6 +24,16 @@ public class SlopeSound : MonoBehaviour
     }
     public void playSpeedReset()
     {
-        speedReset.Play();
+        speedUpSound.Play();
+    }
+
+    public void playSlowDown()
+    {
+        slowDownSound.Play();
+    }
+
+    public void playJump()
+    {
+        jumpSound.Play(); 
     }
 }

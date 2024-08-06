@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SlopeManager : MonoBehaviour
 {
+    [SerializeField] private SlopeSound slopeSound;
     public float strength;
     public GameObject player;
     void Start()
@@ -18,10 +19,12 @@ public class SlopeManager : MonoBehaviour
 
     public void SlowPlayer(Rigidbody rb)
     {
+        slopeSound.playSlowDown();
         rb.velocity = rb.velocity * 0.3f;
     }
     public void SpeedUpPlayer(Rigidbody rb)
     {
+        slopeSound.playSpeedReset();
         rb.velocity = rb.velocity * 1.3f;
     }
 }

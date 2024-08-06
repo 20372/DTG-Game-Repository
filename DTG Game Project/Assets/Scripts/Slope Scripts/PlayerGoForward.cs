@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerGoForward : MonoBehaviour
 {
+    [SerializeField] private SlopeSound slopeSound;
     public float forwardForce = 10.0f; // The amount of force to apply
     public float jumpForce = 1000;
     private Rigidbody rb;
@@ -36,6 +37,7 @@ public class PlayerGoForward : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) & isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            slopeSound.playJump();
             isGrounded = false;
         }
     }

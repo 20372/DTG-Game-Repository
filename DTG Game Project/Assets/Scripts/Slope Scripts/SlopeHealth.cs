@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class SlopeHealth : MonoBehaviour
 {
+
+    [SerializeField] private SlopeSound slopeSound;
     public Image first_cross;
     public Image second_cross;
     public Image last_cross;
@@ -39,6 +41,7 @@ public class SlopeHealth : MonoBehaviour
     {
         Health = Health - 1;
         AnimateCrossIn();
+        slopeSound.playHealthLose();
         Wait();
         if (Health == 0)
         {
