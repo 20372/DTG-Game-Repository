@@ -6,7 +6,7 @@ public class ObjectGrab : MonoBehaviour
 {
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
-
+    [SerializeField] private PlayerPickUpDrop playerPickUpDrop;
     public void Awake()
     {
         objectRigidbody = GetComponent<Rigidbody>();
@@ -16,13 +16,11 @@ public class ObjectGrab : MonoBehaviour
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
     }
-
     public void Drop()
     {
-        this.objectGrabPointTransform = null;
+        objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
     }
-
     private void FixedUpdate()
     {
         if (objectGrabPointTransform != null)
@@ -30,6 +28,14 @@ public class ObjectGrab : MonoBehaviour
             float lerpSpeed = 10f;
             Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
             objectRigidbody.MovePosition(newPosition);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Ground"))
+        {
+            playerPickUpDrop.ChangeIsHoldingBoolValue(0);
+            Drop();
         }
     }
 }

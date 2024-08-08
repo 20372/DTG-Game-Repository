@@ -5,18 +5,19 @@ using UnityEngine.SceneManagement;
 public class PlayerObjectSelect : MonoBehaviour
 {
     RaycastHit hit;
-    public GameSetup gameSetup;
-    public HealthManager healthManager; 
-    public Camera mainCamera;
+    [SerializeField] private GameSetup gameSetup;
+    [SerializeField] private HealthManager healthManager;
+    [SerializeField] Camera mainCamera;
+    [SerializeField] private LayerMask computer;
+    [SerializeField] private float distanceToComputer = 2f;
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            FireRay();
+            RayToCheckIfComputerIsClicked();
         }
     }
-
-    void FireRay()
+    void RayToCheckIfComputerIsClicked()
     {
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
 
@@ -31,6 +32,10 @@ public class PlayerObjectSelect : MonoBehaviour
             {
                 gameSetup.SavePlayerInfo();
                 SceneManager.LoadScene("Circuit");
+            }
+            if(hit.collider.gameObject.CompareTag("Ground"))
+            {
+                Debug.Log("HEIEIIE ");
             }
            
         }
