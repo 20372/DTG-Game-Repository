@@ -5,16 +5,23 @@ using UnityEngine;
 public class DoorAnimations : MonoBehaviour
 {
 
-    [SerializeField] private Animation open;
+    [SerializeField] private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        open.Play();
+        anim.SetBool("OpenDoor", true);
+        anim.SetBool("Start", false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenDoor()
     {
-        
+        anim.SetBool("Start", true);
+        anim.SetBool("OpenDoor", true);
     }
+    public void CloseDoor()
+    {
+
+        anim.SetBool("OpenDoor", false);
+    }
+    
 }
