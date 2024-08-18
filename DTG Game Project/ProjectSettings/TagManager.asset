@@ -15,6 +15,11 @@ TagManager:
   - FastSpeed
   - Wall
   - Open
+  - Thing
+  - Concrete
+  - Red
+  - Blue
+  - Multi
   layers:
   - Default
   - TransparentFX
