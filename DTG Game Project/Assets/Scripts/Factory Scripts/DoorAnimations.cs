@@ -11,6 +11,7 @@ public class DoorAnimations : MonoBehaviour
     {
         anim.SetBool("OpenDoor", true);
         anim.SetBool("Start", false);
+        OpenDoor();
     }
 
     public void OpenDoor()
