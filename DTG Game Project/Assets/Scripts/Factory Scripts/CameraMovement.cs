@@ -12,7 +12,8 @@ public class CameraMovement : MonoBehaviour
     float xRotation;
     float yRotation;
 
-    private void Start()
+
+    private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

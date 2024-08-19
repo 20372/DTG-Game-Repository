@@ -30,6 +30,11 @@ public class CircuitManager : MonoBehaviour
     public TextMeshProUGUI attempts;
     public TextMeshProUGUI objText;
 
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
     private void Start()
     {
         circuitImages[0].enabled = false;

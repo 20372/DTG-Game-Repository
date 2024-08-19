@@ -46,23 +46,7 @@ public class HealthManager : MonoBehaviour
     //------------------------
     //Health Manager Functions
     //------------------------
-    void Update()
-    {
-        if (Input.GetKeyDown("e"))
-        {
-            DealDamage(20);
-        }
-        if (Input.GetKeyDown("r"))
-        {
-            StartHealing();
-            StartCoroutine(Wait3());
-        }
-        if (healthAmount <= 0)
-        {
-            //DEAD
-        }
-    }
-
+   
     private void LateUpdate()
     {
         batImg.color = Color.Lerp(Blue, Purple, Mathf.PingPong(Time.time / switchDuration, 1));
