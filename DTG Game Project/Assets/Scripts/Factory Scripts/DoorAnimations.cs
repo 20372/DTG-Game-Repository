@@ -11,7 +11,6 @@ public class DoorAnimations : MonoBehaviour
     {
         anim.SetBool("OpenDoor", true);
         anim.SetBool("Start", false);
-        OpenDoor();
     }
 
     public void OpenDoor()
@@ -21,7 +20,6 @@ public class DoorAnimations : MonoBehaviour
     }
     public void CloseDoor()
     {
-
         anim.SetBool("OpenDoor", false);
     }
     

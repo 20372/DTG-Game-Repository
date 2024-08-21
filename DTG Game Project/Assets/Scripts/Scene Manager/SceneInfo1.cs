@@ -15,7 +15,7 @@ public class SceneInfo1 : ScriptableObject
     public bool arenaComplete;
     private void OnEnable()
     {
-        current_PlayerPos = new Vector3(-7.51917458f, 19.7783298f, 6.70836639f);
+        current_PlayerPos = new Vector3(-10.9338417f, 12.4443045f, 31.1084385f);
         current_PlayerRot = new Quaternion(0, 0, 0, 0);
         current_playerHealth = 100f;
         takeDamageOnReturn = false;

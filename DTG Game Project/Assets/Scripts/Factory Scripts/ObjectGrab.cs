@@ -10,6 +10,8 @@ public class ObjectGrab : MonoBehaviour
     public void Awake()
     {
         objectRigidbody = GetComponent<Rigidbody>();
+        GameObject player = GameObject.Find("Player");
+        playerPickUpDrop = player.GetComponent<PlayerPickUpDrop>();
     }
     public void Grab(Transform objectGrabPointTransform)
     {
