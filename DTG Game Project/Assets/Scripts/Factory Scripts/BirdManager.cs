@@ -24,6 +24,14 @@ public class BirdManager : MonoBehaviour
         if (redPlatform == true & bluePlatform == true & multiPlatform == true & concretePlatform == true)
         {
             doorAnimations.OpenDoor();
+         //   Wait(5f);
         }
     }
+
+
+  //  IEnumerator Wait(float WaitTime)
+  //  {
+  //      //yield return new WaitForSeconds(WaitTime);
+       // doorAnimations.CloseDoor();
+ //   }
 }

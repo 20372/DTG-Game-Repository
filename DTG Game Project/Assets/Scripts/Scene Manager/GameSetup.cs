@@ -11,6 +11,8 @@ public class GameSetup : MonoBehaviour
     public Transform playertrans;
     private bool damageOnReturn;
     public PlayerObjectSelect playerObjectSelect;
+    public bool isCircuitDone;
+    public SecondDoor secondDoor;
     private void Awake()
     {
         LoadPlayerInfo();
@@ -23,9 +25,14 @@ public class GameSetup : MonoBehaviour
         player.transform.position = sceneInfo1.current_PlayerPos;
         player.transform.rotation = sceneInfo1.current_PlayerRot;
         damageOnReturn = sceneInfo1.takeDamageOnReturn;
+        isCircuitDone = sceneInfo1.circuitComplete;
         if (damageOnReturn == false)
         {
             healthManager.healthBar.fillAmount = healthManager.healthAmount / 100f;
+        }
+        if (isCircuitDone == true)
+        {
+            secondDoor.OpenDoor();
         }
     }
 

@@ -6,6 +6,7 @@ public class DoorAnimations : MonoBehaviour
 {
 
     [SerializeField] private Animator anim;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class DoorAnimations : MonoBehaviour
     }
     public void CloseDoor()
     {
-        anim.SetBool("OpenDoor", false);
+        anim.Play("RealDoorClose");
     }
     
 }
