@@ -32,6 +32,7 @@ public class GameSetup : MonoBehaviour
         }
         if (isCircuitDone == true)
         {
+            Debug.Log("HIHIHIHTOTOT");
             secondDoor.OpenDoor();
         }
     }

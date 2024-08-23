@@ -9,29 +9,21 @@ public class BirdManager : MonoBehaviour
     public bool bluePlatform;
     public bool multiPlatform;
     public bool concretePlatform;
-    public DoorAnimations doorAnimations;
+    public FirstDoor firstDoor;
     // Start is called before the first frame update
     void Start()
     {
-        redPlatform = false;
-        bluePlatform = false;
-        multiPlatform = false;
-        concretePlatform = false;
+        redPlatform = true;
+        bluePlatform = true;
+        multiPlatform = true;
+        concretePlatform = true;
     }
 
     void LateUpdate()
     {
         if (redPlatform == true & bluePlatform == true & multiPlatform == true & concretePlatform == true)
         {
-            doorAnimations.OpenDoor();
-         //   Wait(5f);
+            firstDoor.OpenDoor();
         }
     }
-
-
-  //  IEnumerator Wait(float WaitTime)
-  //  {
-  //      //yield return new WaitForSeconds(WaitTime);
-       // doorAnimations.CloseDoor();
- //   }
 }

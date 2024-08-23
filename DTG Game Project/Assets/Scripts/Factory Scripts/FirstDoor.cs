@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorAnimations : MonoBehaviour
+public class FirstDoor : MonoBehaviour
 {
 
     [SerializeField] private Animator anim;
@@ -16,12 +16,21 @@ public class DoorAnimations : MonoBehaviour
 
     public void OpenDoor()
     {
-        anim.SetBool("Start", true);
         anim.SetBool("OpenDoor", true);
+        anim.SetBool("Start", true);
     }
     public void CloseDoor()
     {
-        anim.Play("RealDoorClose");
+        anim.SetBool("OpenDoor", false);
+        anim.SetBool("Start", true);
     }
-    
+
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            CloseDoor();
+        }
+    }
 }

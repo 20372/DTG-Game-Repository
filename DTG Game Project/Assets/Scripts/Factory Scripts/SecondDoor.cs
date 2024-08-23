@@ -4,24 +4,31 @@ using UnityEngine;
 
 public class SecondDoor : MonoBehaviour
 {
-    public Animator anim;
+    [SerializeField] private Animator anim;
 
-    public void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        
+        anim.SetBool("OpenDoor", true);
+        anim.SetBool("Start", false);
     }
+
     public void OpenDoor()
     {
-        anim.Play("RealDoorOpen");
+        Debug.Log("Open Second DOor");
+        anim.SetBool("OpenDoor", true);
+        anim.SetBool("Start", true);
     }
     public void CloseDoor()
     {
-        anim.Play("RealDoorClose");
+        anim.SetBool("OpenDoor", false);
+        anim.SetBool("Start", true);
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             CloseDoor();
         }
