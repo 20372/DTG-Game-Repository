@@ -15,9 +15,7 @@ public class SecondDoor : MonoBehaviour
 
     public void OpenDoor()
     {
-        Debug.Log("Open Second DOor");
-        anim.SetBool("OpenDoor", true);
-        anim.SetBool("Start", true);
+        StartCoroutine(Wait(1f));
     }
     public void CloseDoor()
     {
@@ -32,5 +30,12 @@ public class SecondDoor : MonoBehaviour
         {
             CloseDoor();
         }
+    }
+
+    IEnumerator Wait(float WaitTime)
+    {
+        yield return new WaitForSeconds(WaitTime);
+        anim.SetBool("OpenDoor", true);
+        anim.SetBool("Start", true);
     }
 }

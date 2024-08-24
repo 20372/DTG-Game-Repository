@@ -13,10 +13,10 @@ public class BirdManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        redPlatform = true;
-        bluePlatform = true;
-        multiPlatform = true;
-        concretePlatform = true;
+        redPlatform = false;
+        bluePlatform = false;
+        multiPlatform = false;
+        concretePlatform = false;
     }
 
     void LateUpdate()
