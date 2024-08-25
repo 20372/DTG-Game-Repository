@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
+
+    public GameObject GameOverUI;
     //Health Manager Variables 
     public float healthAmount;
     public float healthMax;
@@ -59,6 +61,12 @@ public class HealthManager : MonoBehaviour
     public void DealDamage(float damage)
     {
         healthAmount -= damage;
+        if (healthAmount <=  0)
+        {
+            GameOverUI.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
         healthBar.fillAmount = healthAmount / 100f;
         ChangeBatteryRed();
         soundManager.DamageSound();
@@ -97,9 +105,6 @@ public class HealthManager : MonoBehaviour
         text.enabled = false;
         circleImg.enabled = false;
         BackImg.enabled = false;
-        //Call healing function
-        //Hide healing UI
-        //Del charging object
     }
 
     public IEnumerator UpdateTimer()
