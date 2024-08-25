@@ -90,6 +90,7 @@ public class HealthManager : MonoBehaviour
         remainingTime = TimeCircle;
         currentFillAmount = 1.0f;
         StartCoroutine(UpdateTimer());
+        StartCoroutine(Wait3());
     }
     void HealingOver()
     {
