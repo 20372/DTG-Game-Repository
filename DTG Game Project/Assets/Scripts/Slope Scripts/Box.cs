@@ -13,7 +13,7 @@ public class Box : MonoBehaviour
     void Start()
     {
         rend = GetComponent<Renderer>();
-        StartCoroutine(WaitTime());
+        StartCoroutine(WaitTime()); //Starts Function when scenes opens 
     }
 
     private void Update()
@@ -22,7 +22,7 @@ public class Box : MonoBehaviour
 
     IEnumerator WaitTime()
     {
-        while(true)
+        while(true) //Runs forever and changes box from solid to transparent 
         {
             boxCollider.isTrigger = false;
             rend.material = SOLID;

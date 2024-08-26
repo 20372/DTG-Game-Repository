@@ -13,7 +13,7 @@ public class SecondDoor : MonoBehaviour
     void Start()
     {
         anim.SetBool("OpenDoor", true);
-        anim.SetBool("Start", false);
+        anim.SetBool("Start", false); //Starting Values 
     }
 
     public void OpenDoor()
@@ -23,7 +23,7 @@ public class SecondDoor : MonoBehaviour
     public void CloseDoor()
     {
         anim.SetBool("OpenDoor", false);
-        anim.SetBool("Start", true);
+        anim.SetBool("Start", true); //Plays Closing Animation 
     }
 
 
@@ -36,7 +36,7 @@ public class SecondDoor : MonoBehaviour
                 soundManager.DoorCloseSound();
                 isPlayingClose = true;
             }
-            CloseDoor();
+            CloseDoor(); //if player runs through door close it behind them
         }
     }
 

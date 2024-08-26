@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement")]
+    //Varibles 
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
-    [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
     public float groundDrag;
 
-    [Header("Keybinds")]
+
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
 
@@ -46,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround); //Checks ground postion 
 
         MyInput();
         SpeedControl();
@@ -67,7 +66,7 @@ public class PlayerController : MonoBehaviour
     void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        verticalInput = Input.GetAxisRaw("Vertical"); //Gets user input
 
         //when jump
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
@@ -87,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
         else if (grounded)
         {
-            state = MovementState.walking;
+            state = MovementState.walking;  //Updates state if on ground or sprinting or jumping 
         }
 
         else
@@ -97,16 +96,16 @@ public class PlayerController : MonoBehaviour
     }
     void MovePlayer()
     {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput; //Finds MoveDirection based on keyboard inputs
 
         if (grounded)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force); //Normal Walking Forec
         }
 
         else if (!grounded)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force); //Adds different force when jumping 
         }
     }
 
@@ -116,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
         if (flatVel.magnitude > moveSpeed)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            Vector3 limitedVel = flatVel.normalized * moveSpeed; //Makes sure speed doesnt increase when pressing two keys 
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }

@@ -13,10 +13,10 @@ public class PlayerObjectSelect : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            RayToCheckIfComputerIsClicked();
+            RayToCheckIfComputerIsClicked(); //When Click Shots RayOut in straight line 
         }
     }
-    void RayToCheckIfComputerIsClicked()
+    void RayToCheckIfComputerIsClicked() //If Ray hits a computer loads either slope or circuit scene
     {
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
 
@@ -32,10 +32,7 @@ public class PlayerObjectSelect : MonoBehaviour
                 gameSetup.SavePlayerInfo();
                 SceneManager.LoadScene("Circuit");
             }
-            if(hit.collider.gameObject.CompareTag("Ground"))
-            {
-                Debug.Log("HEIEIIE ");
-            }
+
            
         }
     }

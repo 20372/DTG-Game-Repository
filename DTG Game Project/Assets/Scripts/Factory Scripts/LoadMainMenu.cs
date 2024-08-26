@@ -9,10 +9,10 @@ public class LoadMainMenu : MonoBehaviour
 
     private void Awake()
     {
-        GameOverUI.SetActive(false);
+        GameOverUI.SetActive(false); //Hides GameOverUI
     }
     public void LoadMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Menu"); //Loads the Menu Scene
     }
 }

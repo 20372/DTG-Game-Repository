@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class HealthManager : MonoBehaviour
 {
 
@@ -52,39 +52,39 @@ public class HealthManager : MonoBehaviour
     private void LateUpdate()
     {
         batImg.color = Color.Lerp(Blue, Purple, Mathf.PingPong(Time.time / switchDuration, 1));
-        backgroundBatImg.color = Color.Lerp(Red, Red1, Mathf.PingPong(Time.time / switchDuration, 1));
+        backgroundBatImg.color = Color.Lerp(Red, Red1, Mathf.PingPong(Time.time / switchDuration, 1)); //Changes Battery UI Colour over time forever
     }
     public void ResetHealthAmount(float amount)
     {
         healthBar.fillAmount = amount / 100f;
     }
-    public void DealDamage(float damage)
+    public void DealDamage(float damage) //Makes the player take damage
     {
         healthAmount -= damage;
         if (healthAmount <=  0)
         {
-            GameOverUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            SceneManager.LoadScene("GameOver");
         }
         healthBar.fillAmount = healthAmount / 100f;
         ChangeBatteryRed();
         soundManager.DamageSound();
     }
 
-    public void Heal(float healing)
+    public void Heal(float healing) //Heals the players health
     {
         healthAmount += healing;
         healthAmount = Mathf.Clamp(healthAmount, 0, healthMax);
         healthBar.fillAmount = healthAmount / 100f;
     }
 
-    public IEnumerator Wait3()
+    public IEnumerator Wait3() //Delays 3 seocnds before healing player 
     {
         yield return new WaitForSeconds(3f);
         Heal(20);
         ChangeBatteryGold();
-        soundManager.HealSound();
+        soundManager.HealSound(); //Healing Sound
     }
 
     //--------------------------
@@ -94,7 +94,7 @@ public class HealthManager : MonoBehaviour
     {
         text.enabled = true;
         circleImg.enabled = true;
-        BackImg.enabled = true;
+        BackImg.enabled = true;  //Calls functions needed to heal
         remainingTime = TimeCircle;
         currentFillAmount = 1.0f;
         StartCoroutine(UpdateTimer());
@@ -103,13 +103,13 @@ public class HealthManager : MonoBehaviour
     void HealingOver()
     {
         text.enabled = false;
-        circleImg.enabled = false;
+        circleImg.enabled = false; //Disables UI after healing
         BackImg.enabled = false;
     }
 
     public IEnumerator UpdateTimer()
     {
-        decrementAmount = 1.0f / (TimeCircle / updateInterval);
+        decrementAmount = 1.0f / (TimeCircle / updateInterval); //Updates the Timer for healing
 
         while (remainingTime > 0)
         {
@@ -118,7 +118,7 @@ public class HealthManager : MonoBehaviour
             currentFillAmount -= decrementAmount;
             circleImg.fillAmount = currentFillAmount;
 
-            text.text = $"{remainingTime}";
+            text.text = $"{remainingTime}"; 
 
             if (currentFillAmount <= Mathf.InverseLerp(0, TimeCircle, remainingTime - 1))
             {

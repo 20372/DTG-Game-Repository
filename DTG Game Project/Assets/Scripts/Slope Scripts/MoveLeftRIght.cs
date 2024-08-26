@@ -17,7 +17,7 @@ public class MoveLeftRIght : MonoBehaviour
 
     void Update()
     {
-        if (movingRight)
+        if (movingRight) //Moves game object back and forth from left to right forever.
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
             if (transform.position.x >= startPosition.x + distance)

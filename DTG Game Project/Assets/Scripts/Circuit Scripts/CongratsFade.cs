@@ -7,7 +7,7 @@ public class CongratsFade : MonoBehaviour
 {
     public SceneInfo1 sceneInfo1;
 
-    public List<CanvasGroup> loseUI;
+    public List<CanvasGroup> loseUI; //Variables 
     public List<CanvasGroup> winUI;
 
     public float fadeDuration = 1f;
@@ -42,13 +42,13 @@ public class CongratsFade : MonoBehaviour
     }
     public void GoHomeWin()
     {
-        sceneInfo1.takeDamageOnReturn = false;
+        sceneInfo1.takeDamageOnReturn = false; //Loads Factory Scene and returns if we won or not 
         sceneInfo1.circuitComplete = true;
         SceneManager.LoadScene("Factory");
     }
     public void GoGomeLose()
     {
-        sceneInfo1.takeDamageOnReturn = true;
+        sceneInfo1.takeDamageOnReturn = true; //Loads Factory Scene and makes us take damage on return 
         SceneManager.LoadScene("Factory");
     }
     private IEnumerator FadeCanvasGroup(List<CanvasGroup> UI)
@@ -58,7 +58,7 @@ public class CongratsFade : MonoBehaviour
         while (true)
         {
             UI[4].alpha = UI[4].alpha + increaseAmount;
-            UI[3].alpha = UI[3].alpha + increaseAmount;
+            UI[3].alpha = UI[3].alpha + increaseAmount;  //Slowly increasaes the transparency of a UI 
             UI[2].alpha = UI[2].alpha + increaseAmount;
             UI[1].alpha = UI[1].alpha + increaseAmount;
             UI[0].alpha = UI[0].alpha + increaseAmount;
@@ -66,7 +66,7 @@ public class CongratsFade : MonoBehaviour
 
             if (UI[1].alpha == 1)
             {
-                break;
+                break; //When its 1 or fully visables breaks out of loop
             }
         }
         

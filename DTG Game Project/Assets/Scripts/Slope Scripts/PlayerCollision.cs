@@ -15,7 +15,7 @@ public class PlayerCollision : MonoBehaviour
     private void Start()
     {
         slopeHealth = FindObjectOfType<SlopeHealth>();
-        slopeManager = FindObjectOfType<SlopeManager>();
+        slopeManager = FindObjectOfType<SlopeManager>(); //Finds relevant refernecs 
         startPos = playerPos.transform.position;
         rb = GetComponent<Rigidbody>();
     }
@@ -28,7 +28,7 @@ public class PlayerCollision : MonoBehaviour
         ProcessCollision(other.gameObject);
     }
 
-    public void ProcessCollision (GameObject coll)
+    public void ProcessCollision (GameObject coll) //Users to check all player collision so if they fall off map or complete level or go through a speed gate 
     {
         if (coll.gameObject.CompareTag("Void"))
         {
@@ -38,6 +38,7 @@ public class PlayerCollision : MonoBehaviour
         }
         if (coll.gameObject.CompareTag("Finish"))
         {
+            sceneInfo1.slopeComplete = true;
             SceneManager.LoadScene("Factory");
         }
         if (coll.gameObject.CompareTag("SlowSpeed"))

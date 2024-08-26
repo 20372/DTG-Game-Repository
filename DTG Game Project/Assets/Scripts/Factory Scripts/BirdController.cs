@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BirdController : MonoBehaviour
 {
-
+    //Bool for each platform 
     private bool isConcrete = false;
     private bool isBlue = false;
     private bool isRed = false;
     private bool isMulti = false;
-    [SerializeField] private BirdManager birdManager;
+    [SerializeField] private BirdManager birdManager; //References another script 
 
     private void Start()
     {
@@ -17,7 +17,7 @@ public class BirdController : MonoBehaviour
         {
             isConcrete = true;
         }
-        if (this.gameObject.CompareTag("Red"))
+        if (this.gameObject.CompareTag("Red"))  //Sets the Bool based on the game objects tag 
         {
             isRed = true;
         }
@@ -37,7 +37,7 @@ public class BirdController : MonoBehaviour
         {
             birdManager.concretePlatform = true;
         }
-        if (collision.gameObject.CompareTag("Red") & isRed == true)
+        if (collision.gameObject.CompareTag("Red") & isRed == true)  //checks for collisoon and updates platform bool accordingly 
         {
             birdManager.redPlatform = true;
         }

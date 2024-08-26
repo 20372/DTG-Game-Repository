@@ -9,7 +9,7 @@ public class ThridDoorTrigger : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            thridDoor.OpenDoor();
+            thridDoor.OpenDoor(); //If player collides with this trigger opens the last door
         }
     }
 }

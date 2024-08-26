@@ -16,7 +16,7 @@ public class GameSetup : MonoBehaviour
     public SecondDoor secondDoor;
     private void Awake()
     {
-        LoadPlayerInfo();
+        LoadPlayerInfo(); //When a new scene is active calls this function 
         StartCoroutine(HandleGameSetup(0.1f));
     }
 
@@ -24,35 +24,37 @@ public class GameSetup : MonoBehaviour
     {
         healthManager.healthAmount = sceneInfo1.current_playerHealth;
         player.transform.position = sceneInfo1.current_PlayerPos;
-        player.transform.rotation = sceneInfo1.current_PlayerRot;
+        player.transform.rotation = sceneInfo1.current_PlayerRot; //updates variables from sceneinfo1 scriptable object to be used in new scene.
         damageOnReturn = sceneInfo1.takeDamageOnReturn;
         isCircuitDone = sceneInfo1.circuitComplete;
+        isSlopeDone = sceneInfo1.slopeComplete;
         if (damageOnReturn == false)
         {
             healthManager.healthBar.fillAmount = healthManager.healthAmount / 100f;
         }
         if (isSlopeDone == true)
         {
-            isCircuitDone = false;
             Debug.Log("Take me home");
+            isSlopeDone = false;
         }
         if (isCircuitDone == true)
         {
             Debug.Log("HIHIHIHTOTOT");
             secondDoor.OpenDoor();
+            isCircuitDone = false;
         }
     }
 
     public void SavePlayerInfo()
     {
-        sceneInfo1.current_playerHealth = healthManager.healthAmount;
+        sceneInfo1.current_playerHealth = healthManager.healthAmount; //Vairable to be called before leaving a scene.
         sceneInfo1.current_PlayerPos = playertrans.transform.position;
         sceneInfo1.current_PlayerRot = playertrans.transform.rotation;
     }
 
     public void ApplyDamageOnReturn()
     {
-        if (damageOnReturn == true)
+        if (damageOnReturn == true) //called deal fucntion 
         {
             healthManager.DealDamage(20f);
             sceneInfo1.current_playerHealth = healthManager.healthAmount;
@@ -61,7 +63,7 @@ public class GameSetup : MonoBehaviour
     }
     IEnumerator HandleGameSetup(float waitTime)
     {
-        yield return new WaitForSecondsRealtime(waitTime);
+        yield return new WaitForSecondsRealtime(waitTime); //Delay before taking damage on return
         ApplyDamageOnReturn();
     }
 }

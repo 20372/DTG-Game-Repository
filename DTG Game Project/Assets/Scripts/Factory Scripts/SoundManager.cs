@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public List<AudioSource> sounds;
+    public List<AudioSource> sounds; //List of everySound used in this scene
 
     private void Awake()
     {
         LowWalkingSound();
     }
-    public void DamageSound()
+    public void DamageSound() //Function that plays each one 
     {
         sounds[0].Play();
     }

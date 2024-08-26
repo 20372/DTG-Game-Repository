@@ -28,7 +28,7 @@ public class PlayerGoForward : MonoBehaviour
     }
 
     void Update()
-    {
+    {//Player controller in slope minigame 
         rb.AddForce(Vector3.forward * forwardForce * Time.deltaTime);
         if (Input.GetKey(KeyCode.A))
         {
@@ -43,7 +43,7 @@ public class PlayerGoForward : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             slopeSound.playJump();
-            isGrounded = false;
+            isGrounded = false; //Makes them jump
         }
     }
     IEnumerator Wait()
@@ -75,7 +75,7 @@ public class PlayerGoForward : MonoBehaviour
     private IEnumerator FadePressToStart()
     {
         while (true)
-        {
+        { //Fades away the Starting UI message 
             PressToStart.alpha = PressToStart.alpha - increase;
             yield return new WaitForSeconds(waitTime);
 

@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class CircuitManager : MonoBehaviour
 {
-    public CongratsFade congratsFade;
+    public CongratsFade congratsFade; //References another sctipt
     public CircuitPlaySounds circuitPlaySounds;
 
     private bool isItemOnHand;
     private bool isPowerCorrect;
     private bool topLeftCorrect;
-    private bool topRightCorrect;
+    private bool topRightCorrect;   //Bools used to check if answer is correct 
     private bool areBothSame;
     private bool isResistorOrOutput;
     private bool canClick;
@@ -32,7 +32,7 @@ public class CircuitManager : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.None; //Makes the mouse visable
         Cursor.visible = true;
     }
     private void Start()
@@ -40,7 +40,7 @@ public class CircuitManager : MonoBehaviour
         circuitImages[0].enabled = false;
         currentImageInt = 100;
         SetObjective(0);
-        numberCheck = 0;
+        numberCheck = 0;  //Sets Variables to default vaule 
         attemptsLeft = 3;
         areBothSame = true;
         canClick = false;
@@ -66,12 +66,12 @@ public class CircuitManager : MonoBehaviour
     }
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);  //Waits 0.5 seconds
     }
     public void ResetCircuit()
     {
         circuitImages[1].sprite = components[5];
-        circuitImages[2].sprite = components[5];
+        circuitImages[2].sprite = components[5]; //Resets the circuit sprites to question marks
         circuitImages[3].sprite = components[5];
     }
     public void SetObjective(int objective)
@@ -87,7 +87,7 @@ public class CircuitManager : MonoBehaviour
         currentImageInt = slotIndex;
     }
 
-    public void CircuitPosition(int CircuitIndex)
+    public void CircuitPosition(int CircuitIndex) //Checks if circuit is correct by using bools saved above 
     {
         if (canClick == true)
         {
@@ -145,7 +145,7 @@ public class CircuitManager : MonoBehaviour
     
     public void NextLevel()
     {
-        numberCheck = numberCheck + 1;
+        numberCheck = numberCheck + 1; //Loads next objective e.g led to speaker etc
         isPowerCorrect = false;
         topLeftCorrect = false;
         topRightCorrect = false;
@@ -175,7 +175,7 @@ public class CircuitManager : MonoBehaviour
     }
     public void CheckPressed()
     {
-        if (isPowerCorrect && topLeftCorrect && topRightCorrect && areBothSame == false)
+        if (isPowerCorrect && topLeftCorrect && topRightCorrect && areBothSame == false) //This function runs when user clicks the green button 
         {
             circuitPlaySounds.correct();
             NextLevel();

@@ -10,17 +10,17 @@ public class ObjectGrab : MonoBehaviour
     public void Awake()
     {
         objectRigidbody = GetComponent<Rigidbody>();
-        GameObject player = GameObject.Find("Player");
+        GameObject player = GameObject.Find("Player"); //Setting Componet References 
         playerPickUpDrop = player.GetComponent<PlayerPickUpDrop>();
     }
     public void Grab(Transform objectGrabPointTransform)
     {
-        this.objectGrabPointTransform = objectGrabPointTransform;
+        this.objectGrabPointTransform = objectGrabPointTransform; //Grab Function sets object grabbed position equal to grabpoint position (is in front of player)
         objectRigidbody.useGravity = false;
     }
     public void Drop()
     {
-        objectGrabPointTransform = null;
+        objectGrabPointTransform = null; //Drops item when called 
         objectRigidbody.useGravity = true;
     }
     private void FixedUpdate()
@@ -28,7 +28,7 @@ public class ObjectGrab : MonoBehaviour
         if (objectGrabPointTransform != null)
         {
             float lerpSpeed = 10f;
-            Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
+            Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);  //Slowly moves object toward objectGrabPointTransform 
             objectRigidbody.MovePosition(newPosition);
         }
     }
@@ -36,7 +36,7 @@ public class ObjectGrab : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Ground"))
         {
-            playerPickUpDrop.ChangeIsHoldingBoolValue(0);
+            playerPickUpDrop.ChangeIsHoldingBoolValue(0); //If objects Hits wall or ground auto drops item 
             Drop();
         }
     }

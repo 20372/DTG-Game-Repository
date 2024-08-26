@@ -9,7 +9,7 @@ public class HitLaser : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            healthManager.DealDamage(20f);
+            healthManager.DealDamage(20f); //If player collides with laser takes damage
         }
     }
 }

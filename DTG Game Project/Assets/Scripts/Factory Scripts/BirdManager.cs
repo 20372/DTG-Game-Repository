@@ -6,7 +6,7 @@ public class BirdManager : MonoBehaviour
 {
 
     public bool redPlatform;
-    public bool bluePlatform;
+    public bool bluePlatform; //Platforms bools 
     public bool multiPlatform;
     public bool concretePlatform;
     public FirstDoor firstDoor;
@@ -14,7 +14,7 @@ public class BirdManager : MonoBehaviour
     void Start()
     {
         redPlatform = false;
-        bluePlatform = false;
+        bluePlatform = false; //Sets their starting value 
         multiPlatform = false;
         concretePlatform = false;
     }
@@ -23,7 +23,7 @@ public class BirdManager : MonoBehaviour
     {
         if (redPlatform == true & bluePlatform == true & multiPlatform == true & concretePlatform == true)
         {
-            firstDoor.OpenDoor();
+            firstDoor.OpenDoor(); //If all equal true opens first door 
         }
     }
 }

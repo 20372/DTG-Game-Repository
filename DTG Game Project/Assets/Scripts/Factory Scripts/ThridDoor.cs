@@ -13,13 +13,13 @@ public class ThridDoor : MonoBehaviour
     {
         anim.SetBool("OpenDoor", true);
         anim.SetBool("Start", false);
-        isPlayingOpen = false;
+        isPlayingOpen = false; //Starting Values 
         isPlayingClose = false;
     }
 
     public void OpenDoor()
     {
-        if (isPlayingOpen == false)
+        if (isPlayingOpen == false) //This if is used to ensure DoorOpenSound only plays 1 time 
         {
             soundManager.DoorOpenSound();
             isPlayingOpen = true;
@@ -29,12 +29,12 @@ public class ThridDoor : MonoBehaviour
     }
     public void CloseDoor()
     {
-        if (isPlayingClose == false)
+        if (isPlayingClose == false) //This if is used to ensure DoorCloseSound only plays 1 time 
         {
             soundManager.DoorCloseSound();
             isPlayingClose = true;
         }
-        anim.SetBool("OpenDoor", false);
+        anim.SetBool("OpenDoor", false);  //Plays Closing Animation 
         anim.SetBool("Start", true);
     }
 
@@ -43,7 +43,7 @@ public class ThridDoor : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            CloseDoor();
+            CloseDoor(); //if player runs through door close it behind them
         }
     }
 }

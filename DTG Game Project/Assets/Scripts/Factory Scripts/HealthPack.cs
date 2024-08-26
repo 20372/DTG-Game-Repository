@@ -13,7 +13,7 @@ public class HealthPack : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player") && healthManager.healthAmount < 100 && canHeal == true)
+        if(other.gameObject.CompareTag("Player") && healthManager.healthAmount < 100 && canHeal == true) //If the player can heal then called healing function and after 3 seocnds hides gameobject so player cant heal more then once.
         {
             healthManager.StartHealing();
             StartCoroutine(Wait3Seconds());

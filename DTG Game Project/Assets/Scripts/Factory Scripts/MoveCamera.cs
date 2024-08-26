@@ -9,6 +9,6 @@ public class MoveCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = cameraPos.position +  YOFFSET;
+        transform.position = cameraPos.position +  YOFFSET; //Updates Camera to follow player with an Y offset to its player height 
     }
 }

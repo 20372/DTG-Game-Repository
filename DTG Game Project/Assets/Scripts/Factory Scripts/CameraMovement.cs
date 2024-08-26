@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public float sensX;
-    public float sensY;
+    public float sensY; //Sens for Mouse
 
     public Transform orientation;
 
@@ -16,7 +16,7 @@ public class CameraMovement : MonoBehaviour
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = false; //Hides Mouse 
     }
     private void Update()
     {

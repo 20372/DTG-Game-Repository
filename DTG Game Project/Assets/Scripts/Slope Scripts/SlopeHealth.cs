@@ -7,7 +7,7 @@ public class SlopeHealth : MonoBehaviour
 {
 
     [SerializeField] private SlopeSound slopeSound;
-    public Image first_cross;
+    public Image first_cross; //Variables 
     public Image second_cross;
     public Image last_cross;
     public SceneInfo1 sceneInfo1;
@@ -26,7 +26,6 @@ public class SlopeHealth : MonoBehaviour
         if (Health == 2)
         {
             first_cross.enabled = true;
-            //fade in 
         }
         if (Health == 1)
         {
@@ -39,7 +38,7 @@ public class SlopeHealth : MonoBehaviour
     }
     public void TakeDamage()
     {
-        Health = Health - 1;
+        Health = Health - 1; //Function is called if you fall of map 
         AnimateCrossIn();
         slopeSound.playHealthLose();
         Wait();
@@ -52,7 +51,7 @@ public class SlopeHealth : MonoBehaviour
     void GameOver()
     {
         sceneInfo1.takeDamageOnReturn = true;
-        SceneManager.LoadScene("Factory");
+        SceneManager.LoadScene("Factory"); //When User Runs out of lives loads factory scene 
     }
     IEnumerator Wait()
     {

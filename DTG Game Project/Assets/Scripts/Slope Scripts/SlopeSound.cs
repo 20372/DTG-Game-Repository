@@ -8,13 +8,13 @@ public class SlopeSound : MonoBehaviour
     public AudioSource healthloss;
     public AudioSource speedUpSound;
     public AudioSource slowDownSound;
-    public AudioSource jumpSound;
+    public AudioSource jumpSound; //Audio for slope gmaw 
 
     private void Start()
     {
         playBackGroundMusic();
     }
-    public void playBackGroundMusic()
+    public void playBackGroundMusic() //Function that plays each audio when called 
     {
         backgroundsounds.Play();
     }
