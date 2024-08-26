@@ -9,7 +9,6 @@ public class BirdController : MonoBehaviour
     private bool isBlue = false;
     private bool isRed = false;
     private bool isMulti = false;
-    private int activeBool = 0;
     [SerializeField] private BirdManager birdManager;
 
     private void Start()
@@ -17,22 +16,18 @@ public class BirdController : MonoBehaviour
         if (this.gameObject.CompareTag("Concrete"))
         {
             isConcrete = true;
-            activeBool = 1;
         }
         if (this.gameObject.CompareTag("Red"))
         {
             isRed = true;
-            activeBool = 2;
         }
         if (this.gameObject.CompareTag("Blue"))
         {
             isBlue = true;
-            activeBool = 3;
         }
         if (this.gameObject.CompareTag("Multi"))
         {
             isMulti = true;
-            activeBool = 4;
         }
     }
 

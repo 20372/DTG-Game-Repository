@@ -9,7 +9,6 @@ public class PlayerObjectSelect : MonoBehaviour
     [SerializeField] private HealthManager healthManager;
     [SerializeField] Camera mainCamera;
     [SerializeField] private LayerMask computer;
-    [SerializeField] private float distanceToComputer = 2f;
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))

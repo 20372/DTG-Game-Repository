@@ -12,6 +12,7 @@ public class GameSetup : MonoBehaviour
     private bool damageOnReturn;
     public PlayerObjectSelect playerObjectSelect;
     public bool isCircuitDone;
+    public bool isSlopeDone;
     public SecondDoor secondDoor;
     private void Awake()
     {
@@ -29,6 +30,11 @@ public class GameSetup : MonoBehaviour
         if (damageOnReturn == false)
         {
             healthManager.healthBar.fillAmount = healthManager.healthAmount / 100f;
+        }
+        if (isSlopeDone == true)
+        {
+            isCircuitDone = false;
+            Debug.Log("Take me home");
         }
         if (isCircuitDone == true)
         {
@@ -57,31 +63,5 @@ public class GameSetup : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(waitTime);
         ApplyDamageOnReturn();
-        UpdateObjectiveUI();
     }
-
-    public void UpdateObjectiveUI()
-    {
-        if (sceneInfo1.circuitComplete == true)
-        {
-            //update ui
-        }
-        if (sceneInfo1.slopeComplete == true)
-        {
-            //update ui
-        }
-        if (sceneInfo1.quizComplete == true)
-        {
-            //update UI
-        }
-        if (sceneInfo1.footballComplete == true)
-        {
-            //update UI
-        }
-        if (sceneInfo1.arenaComplete == true)
-        {
-            //update UI
-        }
-    }
-   
 }

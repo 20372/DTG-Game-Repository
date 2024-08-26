@@ -22,6 +22,11 @@ public class PlayerGoForward : MonoBehaviour
         waitTime = 0.001f;
     }
 
+    private void Awake()
+    {
+        StartCoroutine(Wait());
+    }
+
     void Update()
     {
         rb.AddForce(Vector3.forward * forwardForce * Time.deltaTime);
@@ -41,16 +46,14 @@ public class PlayerGoForward : MonoBehaviour
             isGrounded = false;
         }
     }
-
-    private void FixedUpdate()
+    IEnumerator Wait()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            forwardForce = 1000;
-            jumpForce = 12;
-            StartCoroutine(FadePressToStart());
-        }
+        yield return new WaitForSeconds(2.5f);
+        forwardForce = 1000;
+        jumpForce = 12;
+        StartCoroutine(FadePressToStart());
     }
+  
     private void OnCollisionEnter(Collision collision)
     {
         // Check if the player collides with the ground

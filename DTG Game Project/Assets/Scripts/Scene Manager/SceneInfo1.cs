@@ -10,9 +10,7 @@ public class SceneInfo1 : ScriptableObject
     public bool takeDamageOnReturn;
     public bool slopeComplete;
     public bool circuitComplete;
-    public bool quizComplete;
-    public bool footballComplete;
-    public bool arenaComplete;
+
     private void OnEnable()
     {
         current_PlayerPos = new Vector3(-10.9338417f, 12.4443045f, 31.1084385f);
@@ -21,8 +19,5 @@ public class SceneInfo1 : ScriptableObject
         takeDamageOnReturn = false;
         slopeComplete = false;
         circuitComplete = false;
-        quizComplete = false;
-        footballComplete = false;
-        arenaComplete = false;
     }
 }

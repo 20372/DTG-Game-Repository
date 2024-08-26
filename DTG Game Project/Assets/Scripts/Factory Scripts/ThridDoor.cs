@@ -2,26 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecondDoor : MonoBehaviour
+public class ThridDoor : MonoBehaviour
 {
     [SerializeField] private Animator anim;
     [SerializeField] private SoundManager soundManager;
     public bool isPlayingOpen;
     public bool isPlayingClose;
-
     // Start is called before the first frame update
     void Start()
     {
         anim.SetBool("OpenDoor", true);
         anim.SetBool("Start", false);
+        isPlayingOpen = false;
+        isPlayingClose = false;
     }
 
     public void OpenDoor()
     {
-        StartCoroutine(Wait(1f));
+        if (isPlayingOpen == false)
+        {
+            soundManager.DoorOpenSound();
+            isPlayingOpen = true;
+        }
+        anim.SetBool("OpenDoor", true);
+        anim.SetBool("Start", true);
     }
     public void CloseDoor()
     {
+        if (isPlayingClose == false)
+        {
+            soundManager.DoorCloseSound();
+            isPlayingClose = true;
+        }
         anim.SetBool("OpenDoor", false);
         anim.SetBool("Start", true);
     }
@@ -31,24 +43,7 @@ public class SecondDoor : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (isPlayingClose == false)
-            {
-                soundManager.DoorCloseSound();
-                isPlayingClose = true;
-            }
             CloseDoor();
         }
-    }
-
-    IEnumerator Wait(float WaitTime)
-    {
-        yield return new WaitForSeconds(WaitTime);
-        if (isPlayingOpen == false)
-        {
-            soundManager.DoorOpenSound();
-            isPlayingOpen = true;
-        }
-        anim.SetBool("OpenDoor", true);
-        anim.SetBool("Start", true);
     }
 }
