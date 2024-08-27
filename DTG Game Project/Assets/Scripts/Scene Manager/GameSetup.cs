@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSetup : MonoBehaviour
 {
@@ -34,7 +35,9 @@ public class GameSetup : MonoBehaviour
         }
         if (isSlopeDone == true)
         {
-            Debug.Log("Take me home");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true; 
+            SceneManager.LoadScene("YouWin");
             isSlopeDone = false;
         }
         if (isCircuitDone == true)
